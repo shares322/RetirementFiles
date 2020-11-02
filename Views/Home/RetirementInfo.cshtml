@@ -1,0 +1,22 @@
+﻿@model Assessment6Mock.Models.RetirementInfo
+
+    @{
+        ViewData["Title"] = "RetirementInfo";
+    }
+    <h1>Retirement Information</h1>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FirstName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FirstName)
+            </dd>
+        </dl>
+        <h4>@ViewBag.CanRetire</h4>
+        <h4>@(((decimal)ViewBag.Benefits).ToString("C2"))</h4>
+        
+    </div>
+    <div>
+        <a asp-action="Employee">Back to Employee List</a>
+    </div>

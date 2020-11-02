@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Assessment6Mock.Models.Employee>
+
+<h1>Employees</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Employee List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="Home" asp-action="RetirementInfo" class="btn btn-primary">
+                Retirement Info
+            </a>
+        </div>
+    </div>
+
+    <br /><br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th><th>
+                        First Name
+                    </th>
+                    <th>
+                        Age
+                    </th>
+                    <th>
+                        Salary
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var obj in Model)
+                {
+                <tr>
+                    <td width="10%">@obj.Id</td>
+                    <td width="50%">@obj.FirstName</td>
+                    <td width="30%">@obj.Age</td>
+                    <td width="30%">@obj.Salary.ToString("C", new System.Globalization.CultureInfo("en-US"))</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>No category exists</p>
+    }
+</div>
+
+
+@using (@Html.BeginForm("RetirementInfo", "Home", FormMethod.Post))
+{ 
+    <label for="EmployeeId" class="text-primary">Employee ID</label>
+    <input id="employeeId" name="employeeId" type="number"/>
+    <input id="Submit" type="submit" value="Submit"/>
+}
+
+
+
+@section Scripts{
+
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+
+}
